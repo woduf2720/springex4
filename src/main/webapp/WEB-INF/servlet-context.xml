@@ -16,6 +16,7 @@
         <property name="formatters">
             <set>
                 <bean class="org.zerock.springex4.controller.formatter.LocalDateFormatter"/>
+                <bean class="org.zerock.springex4.controller.formatter.CheckboxFormatter"/>
             </set>
         </property>
     </bean>

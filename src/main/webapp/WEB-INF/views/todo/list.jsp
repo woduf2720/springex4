@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Park
   Date: 2024-01-08
-  Time: 오후 3:34
+  Time: 오후 11:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -53,39 +53,37 @@
                 <div class="card">
                     <h5 class="card-header">Featured</h5>
                     <div class="card-body">
-                        <form action="/todo/register" method="post">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Title</span>
-                                <input type="text" name="title" class="form-control" placeholder="Title"/>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">DueDate</span>
-                                <input type="date" name="dueDate" class="form-control"/>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Writer</span>
-                                <input type="text" name="writer" class="form-control" placeholder="Writer"/>
-                            </div>
-                            <div class="my-4">
-                                <div class="float-end">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
-                                </div>
-                            </div>
-                        </form>
-                        <script>
-                            const serverValidResult = {}
-                            <c:forEach items="${errors}" var="error">
-                                serverValidResult['${error.getField()}'] = '${error.defaultMessage}'
+                        <h5 class="card-title">Special title treatment</h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Tno</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Writer</th>
+                                <th scope="col">DueDate</th>
+                                <th scope="col">Finished</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${dtoList}" var="dto">
+                                <tr>
+                                    <th scope="row"><c:out value="${dto.tno}"/></th>
+                                    <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none"><c:out value="${dto.title}"/></a></td>
+                                    <td><c:out value="${dto.title}"/></td>
+                                    <td><c:out value="${dto.writer}"/></td>
+                                    <td><c:out value="${dto.dueDate}"/></td>
+                                    <td><c:out value="${dto.finished}"/></td>
+                                </tr>
                             </c:forEach>
-                            console.log(serverValidResult)
-                        </script>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row content">
+        <h1>Content</h1>
     </div>
     <div class="row footer">
         <div class="row fixed-bottom" style="z-index: -100">
